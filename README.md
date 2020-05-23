@@ -14,6 +14,3 @@ This code can be simplifed to
 ```swift
 let currentYear = Date().toMondthDayYear().year
 ```
-
-[Documentation](https://github.com/kraigspear/SpearDates/blob/gh-pages/docs/index.html)
-
