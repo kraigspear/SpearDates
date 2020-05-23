@@ -15,7 +15,4 @@ This code can be simplifed to
 let currentYear = Date().toMondthDayYear().year
 ```
 
-
-### Date Adding Subtracting
-
-## 
+[Some Link](https://github.com/kraigspear/SpearDates/tree/gh-pages/docs)
