@@ -8,6 +8,12 @@
 
 import Foundation
 
+
+/// Operator to subtract dates
+/// - Parameters:
+///   - left: Left side
+///   - right: Right side
+/// - Returns: Result of subtracting two dates
 public func - (left: Date, right: Date) -> (month: Int, day: Int, year: Int, hour: Int, minute: Int, second: Int) {
     return left.subtractDate(right)
 }
