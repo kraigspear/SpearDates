@@ -46,7 +46,7 @@ final class DateTest: XCTestCase {
     func testJulianDay() {
         let expected = Double(2_457_313.6)
         let date = Date(timeIntervalSince1970: 1_445_077_917)
-        let j = date.toJullianDayNumber()
+        let j = date.toJulianDayNumber()
         XCTAssertEqual(expected, j)
     }
 
