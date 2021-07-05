@@ -148,9 +148,9 @@ public extension Date {
     }
 
     /**
-     Converts this date to the Jullian Day
+     Converts this date to the Julian Day
      */
-    func toJullianDayNumber() -> Double {
+    func toJulianDayNumber() -> Double {
         let components = toMonthDayYear()
 
         let a = floor(Double((14 - components.month) / 12))
