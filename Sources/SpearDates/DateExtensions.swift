@@ -19,6 +19,13 @@ public func - (left: Date, right: Date) -> (month: Int, day: Int, year: Int, hou
 }
 
 public extension Date {
+
+    //MARK: - Date Time Const
+    static var numberOfMinutesInDay: Int { 1_440 }
+    static var minutesInHour: Int { 60 }
+
+    //MARK: - Extensions
+
     /**
      Adds a certain number of days to this date
 
@@ -65,11 +72,11 @@ public extension Date {
     }
     
     /**
-     Is this day the same day as the other date? Ignoreing time
+     Is this day the same day as the other date? Ignoring time
 
      - Parameter date: The date to compare this time with
 
-     - Returns: true if the two days occure on the same day
+     - Returns: true if the two days occur on the same day
      */
     func isSameDay(_ date: Date) -> Bool {
         let calendar = Calendar.current
@@ -256,6 +263,19 @@ public extension Date {
         return Calendar.current.date(from: components)!
     }
 
-    /// Convience property for readability to encourage one way to get epoch. `timeIntervalSince1970`
+    /// Connivance property for readability to encourage one way to get epoch. `timeIntervalSince1970`
     var epoch: TimeInterval { timeIntervalSince1970 }
+
+
+    /// What minute of the day for this Date
+    var minuteOfDay: Int {
+        let hourMinutes = Calendar.current.dateComponents([.hour, .minute], from: self)
+        return (hourMinutes.hour! * Date.minutesInHour) + hourMinutes.minute!
+    }
+
+    /// What percentage of the day has passed expressed from 0.0 to 1.0
+    /// Example 12:00 PM would be .5
+    var percentOfDay: Double {
+        Double(minuteOfDay) / Double(Date.numberOfMinutesInDay)
+    }
 }

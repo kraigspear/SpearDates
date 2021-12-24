@@ -99,4 +99,15 @@ final class DateTest: XCTestCase {
         
         XCTAssertEqual(minutes, twentyMinutesFromNow.numberOfMinutesBetween(date))
     }
+
+    func testNumberOfMinutesInDay() {
+        let expect = 12 * 60
+        let date = Date(timeIntervalSince1970: 1640365200)
+        XCTAssertEqual(expect, date.minuteOfDay)
+    }
+
+    func testNoonIsFiftyPrecentOfTheDay() {
+        let date = Date(timeIntervalSince1970: 1640365200)
+        XCTAssertEqual(0.5, date.percentOfDay)
+    }
 }
