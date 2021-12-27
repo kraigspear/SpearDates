@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// Operator to subtract dates
 /// - Parameters:
 ///   - left: Left side
@@ -277,5 +276,28 @@ public extension Date {
     /// Example 12:00 PM would be .5
     var percentOfDay: Double {
         Double(minuteOfDay) / Double(Date.numberOfMinutesInDay)
+    }
+
+    /**
+     Given this date, return another date with the given hour, minute and second
+     or nil if the date could not be created.
+     A Date might not be created if the inputs are invalid such as invalid minute.
+
+     - returns: A new Date, or nil if a date could not be found which matches the components.
+
+     - parameters:
+        - hour: The hour (0 - 23) of the day to give to this time
+        - minute: The minute of a given day 0 - 59
+        - second: The second of the given day 0 - 59
+     */
+    func atGiven(hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date? {
+        let flags: Set<Calendar.Component> = [.month, .day, .year, .hour, .minute, .second]
+        var components = Calendar.current.dateComponents(flags, from: self)
+
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+
+        return Calendar.current.date(from: components)
     }
 }
