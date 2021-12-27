@@ -110,4 +110,12 @@ final class DateTest: XCTestCase {
         let date = Date(timeIntervalSince1970: 1640365200)
         XCTAssertEqual(0.5, date.percentOfDay)
     }
+
+    func testAtGivenValidHourMinute() {
+        let date = Date(timeIntervalSince1970: 1640600037)
+        let expectedDate = Date(timeIntervalSince1970: 1640611452)
+        let atEightTwentyFour = date.atGiven(hour: 8, minute: 24, second: 12)
+        XCTAssertNotNil(atEightTwentyFour)
+        XCTAssertEqual(expectedDate, atEightTwentyFour)
+    }
 }
