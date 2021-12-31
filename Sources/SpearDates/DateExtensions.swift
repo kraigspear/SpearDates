@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpearFoundation
 
 /// Operator to subtract dates
 /// - Parameters:
@@ -276,6 +277,23 @@ public extension Date {
     /// Example 12:00 PM would be .5
     var percentOfDay: Double {
         Double(minuteOfDay) / Double(Date.numberOfMinutesInDay)
+    }
+
+    /**
+     Create a date using today at a given precent with a range of 0.0 to 1.0
+     - parameter precentOfDay
+     Example: 0.5
+     */
+    init(@Clamped(range: 0.0...1.0) precentOfDay: Double) {
+
+        let numberOfMinutesInDay = 60.0 * 24.0
+
+        let minutesForPercent = precentOfDay * numberOfMinutesInDay
+        let hours = minutesForPercent / 60.0
+        let minutesPct = hours.truncatingRemainder(dividingBy: 1.0)
+        let remainingMinutes = minutesPct * 60.0
+
+        self = Date.now.atGiven(hour: Int(hours), minute: Int(remainingMinutes))!
     }
 
     /**

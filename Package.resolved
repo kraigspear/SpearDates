@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SpearFoundation",
+        "repositoryURL": "https://github.com/kraigspear/Spearfoundation.git",
+        "state": {
+          "branch": "main",
+          "revision": "4b7daf2b054eeb6d3cc0e69709242316fca62e01",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
