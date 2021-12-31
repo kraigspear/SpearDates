@@ -118,4 +118,22 @@ final class DateTest: XCTestCase {
         XCTAssertNotNil(atEightTwentyFour)
         XCTAssertEqual(expectedDate, atEightTwentyFour)
     }
+
+    func testPercentOfDayMidDay() {
+        let pct = 0.5
+        let date = Date(precentOfDay: pct)
+        let components = date.toMonthDayYearHourMinutesSeconds()
+        XCTAssertEqual(12, components.hour)
+        XCTAssertEqual(0, components.minutes)
+    }
+
+    func testPrecentOfDayEndOfDay() {
+        let pct = 0.9999
+        let date = Date(precentOfDay: pct)
+        let components = date.toMonthDayYearHourMinutesSeconds()
+        XCTAssertEqual(23, components.hour)
+        XCTAssertEqual(59, components.minutes)
+    }
+
+
 }
