@@ -19,12 +19,12 @@ public func - (left: Date, right: Date) -> (month: Int, day: Int, year: Int, hou
 }
 
 public extension Date {
+    // MARK: - Date Time Const
 
-    //MARK: - Date Time Const
-    static var numberOfMinutesInDay: Int { 1_440 }
+    static var numberOfMinutesInDay: Int { 1440 }
     static var minutesInHour: Int { 60 }
 
-    //MARK: - Extensions
+    // MARK: - Extensions
 
     /**
      Adds a certain number of days to this date
@@ -48,11 +48,10 @@ public extension Date {
         return calendar.date(byAdding: dayComponent, to: self)!
     }
 
-    
     /** Adds a certain number of minutes to this date
-    - Parameter numberOfMinutes: Number of minutes to add
-    - Returns: Date with the minutes added
-    **/
+     - Parameter numberOfMinutes: Number of minutes to add
+     - Returns: Date with the minutes added
+     **/
     func addMinutes(_ numberOfMinutes: Int) -> Date {
         var dayComponent = DateComponents()
         dayComponent.minute = numberOfMinutes
@@ -61,16 +60,16 @@ public extension Date {
     }
 
     /** Adds a certain number of hours to this date
-    - Parameter numberOfHours: Number of hours to add
-    - Returns: Date with the minutes added
-    **/
+     - Parameter numberOfHours: Number of hours to add
+     - Returns: Date with the minutes added
+     **/
     func addHours(_ numberOfHours: Int) -> Date {
         var dayComponent = DateComponents()
         dayComponent.hour = numberOfHours
         let calendar = Calendar.current
         return calendar.date(byAdding: dayComponent, to: self)!
     }
-    
+
     /**
      Is this day the same day as the other date? Ignoring time
 
@@ -115,12 +114,11 @@ public extension Date {
                 second: dateComponents.second!)
     }
 
-    
-   /**
-    Extract out the m/d/y/h/m/s parts of a date into a Tuple
+    /**
+     Extract out the m/d/y/h/m/s parts of a date into a Tuple
 
-    - Returns: A tuple as three ints that include month day year
-    */
+     - Returns: A tuple as three ints that include month day year
+     */
     func toMonthDayYearHourMinutesSeconds() -> (month: Int, day: Int, year: Int, hour: Int, minutes: Int, seconds: Int) {
         let flags: Set<Calendar.Component> = [.month, .day, .year, .hour, .minute, .second]
         let components = Calendar.current.dateComponents(flags, from: self)
@@ -171,7 +169,7 @@ public extension Date {
         f += floor(y / 400.0)
         f -= 32045
 
-        let jdn: Double = Double(components.day) + f
+        let jdn = Double(components.day) + f
 
         return jdn
     }
@@ -197,7 +195,7 @@ public extension Date {
      - parameter and: The end date to compare
      */
     func isBetween(_ startDate: Date, and endDate: Date) -> Bool {
-        return timeIntervalSinceReferenceDate >= startDate.timeIntervalSinceReferenceDate &&
+        timeIntervalSinceReferenceDate >= startDate.timeIntervalSinceReferenceDate &&
             timeIntervalSinceReferenceDate <= endDate.timeIntervalSinceReferenceDate
     }
 
@@ -212,11 +210,11 @@ public extension Date {
     }
 
     /**
-    How many minutes have passed between this date and the current date
-    - parameter otherDate: Date to compare this date to
-    */
+     How many minutes have passed between this date and the current date
+     - parameter otherDate: Date to compare this date to
+     */
     func numberOfMinutesBetweenNow() -> Int {
-        return numberOfMinutesBetween(Date())
+        numberOfMinutesBetween(Date())
     }
 
     /**
@@ -266,7 +264,6 @@ public extension Date {
     /// Connivance property for readability to encourage one way to get epoch. `timeIntervalSince1970`
     var epoch: TimeInterval { timeIntervalSince1970 }
 
-
     /// What minute of the day for this Date
     var minuteOfDay: Int {
         let hourMinutes = Calendar.current.dateComponents([.hour, .minute], from: self)
@@ -284,8 +281,7 @@ public extension Date {
      - parameter precentOfDay
      Example: 0.5
      */
-    init(@Clamped(range: 0.0...1.0) precentOfDay: Double) {
-
+    init(@Clamped(range: 0.0 ... 1.0) precentOfDay: Double) {
         let numberOfMinutesInDay = 60.0 * 24.0
 
         let minutesForPercent = precentOfDay * numberOfMinutesInDay

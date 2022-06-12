@@ -10,13 +10,11 @@ import Foundation
 
 /// Common Date Formats
 public enum DateFormat: String {
-    
     case hmm_a = "h:mm a"
     case ha
     case hmm = "h:mm"
     case dayOfWeek = "EEEE"
 
-    
     /// Create a formatter in the provided time zone
     /// - Parameter inTimeZone: TimeZone to create the formatter in
     /// - Returns: DateFormatter for the given TimeZone
@@ -55,20 +53,17 @@ public final class DateFormatters {
         dateFormatter.dateFormat = DateFormat.dayOfWeek.rawValue
         return dateFormatter
     }()
-	
-	public lazy var shortTime: DateFormatter = {
-        let dateFormatter = DateFormatter()
-		dateFormatter.timeStyle = .short
-        return dateFormatter
-	}()
-	
-	public lazy var shortDateTime: DateFormatter = {
-        let dateFormatter = DateFormatter()
-		dateFormatter.dateStyle = .short
-		dateFormatter.timeStyle = .short
-        return dateFormatter
-	}()
 
-	
-	
+    public lazy var shortTime: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }()
+
+    public lazy var shortDateTime: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }()
 }

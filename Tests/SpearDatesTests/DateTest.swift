@@ -56,9 +56,9 @@ final class DateTest: XCTestCase {
         let mdy = aDayLater.toMonthDayYear()
         XCTAssertEqual(18, mdy.day)
     }
-    
+
     func testAddMinutes() {
-        //Saturday, October 17, 2015 10:31:57 AM
+        // Saturday, October 17, 2015 10:31:57 AM
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
         let twentyMinutesFrom = oct172015.addMinutes(20)
         let components = Calendar.current.dateComponents([Calendar.Component.minute], from: twentyMinutesFrom)
@@ -71,49 +71,46 @@ final class DateTest: XCTestCase {
         let laterThatSameDay = Date(timeIntervalSince1970: 1_445_114_196)
         XCTAssertTrue(oct172015.isSameDay(laterThatSameDay))
     }
-    
+
     func testIsBetween() {
-        
         let oct172015At1031 = Date(timeIntervalSince1970: 1_445_077_917)
         let oct172015At1600 = Date(timeIntervalSince1970: 1_445_097_600)
         let oct172015At2036 = Date(timeIntervalSince1970: 1_445_114_196)
-        
+
         XCTAssertTrue(oct172015At1600.isBetween(oct172015At1031, and: oct172015At2036))
     }
-    
+
     func testIsNotBetween() {
-        
         let oct172015At1031 = Date(timeIntervalSince1970: 1_445_077_917)
         let someDateIn2020 = Date(timeIntervalSince1970: 1_590_227_875)
         let oct172015At2036 = Date(timeIntervalSince1970: 1_445_114_196)
-        
+
         XCTAssertFalse(someDateIn2020.isBetween(oct172015At1031, and: oct172015At2036))
     }
-    
+
     func testNumberOfMinutesBetween() {
-        
         let minutes = 20
-        
+
         let date = Date(timeIntervalSince1970: 1_590_228_486)
         let twentyMinutesFromNow = date.addMinutes(minutes)
-        
+
         XCTAssertEqual(minutes, twentyMinutesFromNow.numberOfMinutesBetween(date))
     }
 
     func testNumberOfMinutesInDay() {
         let expect = 12 * 60
-        let date = Date(timeIntervalSince1970: 1640365200)
+        let date = Date(timeIntervalSince1970: 1_640_365_200)
         XCTAssertEqual(expect, date.minuteOfDay)
     }
 
     func testNoonIsFiftyPrecentOfTheDay() {
-        let date = Date(timeIntervalSince1970: 1640365200)
+        let date = Date(timeIntervalSince1970: 1_640_365_200)
         XCTAssertEqual(0.5, date.percentOfDay)
     }
 
     func testAtGivenValidHourMinute() {
-        let date = Date(timeIntervalSince1970: 1640600037)
-        let expectedDate = Date(timeIntervalSince1970: 1640611452)
+        let date = Date(timeIntervalSince1970: 1_640_600_037)
+        let expectedDate = Date(timeIntervalSince1970: 1_640_611_452)
         let atEightTwentyFour = date.atGiven(hour: 8, minute: 24, second: 12)
         XCTAssertNotNil(atEightTwentyFour)
         XCTAssertEqual(expectedDate, atEightTwentyFour)
@@ -134,6 +131,4 @@ final class DateTest: XCTestCase {
         XCTAssertEqual(23, components.hour)
         XCTAssertEqual(59, components.minutes)
     }
-
-
 }
