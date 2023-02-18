@@ -314,4 +314,19 @@ public extension Date {
 
         return Calendar.current.date(from: components)
     }
+    
+    func replacingDay(with replacingWith: Date = Date()) -> Date {
+        
+        let monthDayYear = replacingWith.toMonthDayYear()
+        
+        let flags: Set<Calendar.Component> = [.month, .day, .year, .hour, .minute, .second]
+        var components = Calendar.current.dateComponents(flags, from: self)
+        
+        components.month = monthDayYear.month
+        components.day = monthDayYear.day
+        components.year = monthDayYear.year
+        
+        return Calendar.current.date(from: components)!
+    }
+    
 }

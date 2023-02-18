@@ -131,4 +131,14 @@ final class DateTest: XCTestCase {
         XCTAssertEqual(23, components.hour)
         XCTAssertEqual(59, components.minutes)
     }
+    
+    func testReplaceDate() {
+        let someDate = Date(timeIntervalSince1970: 1582063862)
+        let todayMonthDayYear = Date().toMonthDayYear()
+        let replaced = someDate.replacingDay().toMonthDayYear()
+        
+        XCTAssertEqual(todayMonthDayYear.month, replaced.month)
+        XCTAssertEqual(todayMonthDayYear.day, replaced.day)
+        XCTAssertEqual(todayMonthDayYear.year, replaced.year)
+    }
 }
