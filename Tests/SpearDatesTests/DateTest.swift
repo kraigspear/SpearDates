@@ -96,6 +96,16 @@ final class DateTest: XCTestCase {
 
         XCTAssertEqual(minutes, twentyMinutesFromNow.numberOfMinutesBetween(date))
     }
+    
+    func testNumberOfDaysBetween() {
+        let days = 7
+        
+        let date = Date(timeIntervalSince1970: 1_684_488_182)
+        
+        let sevenDaysFromNow = date.addDays(7)
+        
+        XCTAssertEqual(days, sevenDaysFromNow.numberOfDaysBetween(date))
+    }
 
     func testNumberOfMinutesInDay() {
         let expect = 12 * 60

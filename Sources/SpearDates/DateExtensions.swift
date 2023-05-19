@@ -208,6 +208,12 @@ public extension Date {
         let difference = Calendar.current.dateComponents(calendarUnit, from: self, to: otherDate)
         return abs(difference.minute!)
     }
+    
+    func numberOfDaysBetween(_ otherDate: Date = Date()) -> Int {
+        let calendarUnit: Set<Calendar.Component> = [Calendar.Component.day]
+        let difference = Calendar.current.dateComponents(calendarUnit, from: self, to: otherDate)
+        return abs(difference.day!)
+    }
 
     /**
      How many minutes have passed between this date and the current date
