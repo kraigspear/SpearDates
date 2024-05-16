@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kraigspear/Spearfoundation.git",
       "state" : {
-        "revision" : "8162621bac347de474c0cb6bf94bb3cbbf4889df",
-        "version" : "2.0.2"
+        "branch" : "main",
+        "revision" : "3b0af6331db07c3af5bb3d885d9261dbe64cb362"
       }
     }
   ],
