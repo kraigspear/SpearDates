@@ -224,15 +224,13 @@ public extension Date {
     }
 
     /**
-     Convert this date to a string formatted as zulu date
+     Convert this date to a string formatted as Zulu date
 
-     - returns: Date formattted as a zule date
+     - returns: Date formatted as a Zulu date
      - seealso: String.toDateFromZulu()
      */
     func toZuluFormattedString() -> String {
-        assert(DateFormatters.instance.zulu.count > 0, "We expect to have at least one Zulu formatter")
-        let firstFormatter = DateFormatters.instance.zulu.first!
-        return firstFormatter.string(from: self)
+        DateFormatters.formatZulu(self)
     }
 
     /// Midnight on this date
