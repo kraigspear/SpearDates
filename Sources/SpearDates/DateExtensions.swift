@@ -319,6 +319,47 @@ public extension Date {
         return Calendar.current.date(from: components)
     }
     
+    /// Creates a `Date` instance for the specified date and time components.
+    ///
+    /// This method creates a `Date` object using the provided date and time components.
+    /// The time components (hour, minute, and second) are optional and default to 0 if not specified.
+    ///
+    /// - Parameters:
+    ///   - month: The month of the year (1-12).
+    ///   - day: The day of the month (1-31).
+    ///   - year: The year.
+    ///   - hour: The hour of the day (0-23). Defaults to 0.
+    ///   - minute: The minute of the hour (0-59). Defaults to 0.
+    ///   - second: The second of the minute (0-59). Defaults to 0.
+    ///
+    /// - Returns: A `Date` instance representing the specified date and time,
+    ///            or `nil` if the date cannot be created from the given components.
+    ///
+    /// - Note: This method uses the current calendar and time zone settings.
+    ///
+    /// - Example:
+    ///   ```swift
+    ///   if let date = Date.atGiven(month: 9, day: 20, year: 2024, hour: 14, minute: 30) {
+    ///       print(date)
+    ///   }
+    ///   ```
+    static func atGiven(month: Int,
+                        day: Int,
+                        year: Int,
+                        hour: Int = 0,
+                        minute: Int = 0,
+                        second: Int = 0
+    ) -> Self? {
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return Calendar.current.date(from: components)
+    }
+    
     func replacingDay(with replacingWith: Date = Date()) -> Date {
         
         let monthDayYear = replacingWith.toMonthDayYear()

@@ -14,27 +14,27 @@ final class DateTest: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-
+    
     func testMDY() {
         let date = Date(timeIntervalSince1970: 1_445_077_917)
-
+        
         let mdy = date.toMonthDayYear()
-
+        
         XCTAssertEqual(10, mdy.month)
         XCTAssertEqual(17, mdy.day)
         XCTAssertEqual(2015, mdy.year)
     }
-
+    
     func testMDYHMS() {
         let date = Date(timeIntervalSince1970: 1_445_077_917)
-
+        
         let mdy = date.toMonthDayYearHourMinutesSeconds()
-
+        
         XCTAssertEqual(10, mdy.month)
         XCTAssertEqual(17, mdy.day)
         XCTAssertEqual(2015, mdy.year)
@@ -42,21 +42,21 @@ final class DateTest: XCTestCase {
         XCTAssertEqual(31, mdy.minutes)
         XCTAssertEqual(57, mdy.seconds)
     }
-
+    
     func testJulianDay() {
         let expected = Double(2_457_313.6)
         let date = Date(timeIntervalSince1970: 1_445_077_917)
         let j = date.toJulianDayNumber()
         XCTAssertEqual(expected, j)
     }
-
+    
     func testAddDays() {
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
         let aDayLater = oct172015.addDays(1)
         let mdy = aDayLater.toMonthDayYear()
         XCTAssertEqual(18, mdy.day)
     }
-
+    
     func testAddMinutes() {
         // Saturday, October 17, 2015 10:31:57 AM
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
@@ -65,35 +65,35 @@ final class DateTest: XCTestCase {
         // 31 + 20
         XCTAssertEqual(51, components.minute!)
     }
-
+    
     func testIsSameDay() {
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
         let laterThatSameDay = Date(timeIntervalSince1970: 1_445_114_196)
         XCTAssertTrue(oct172015.isSameDay(laterThatSameDay))
     }
-
+    
     func testIsBetween() {
         let oct172015At1031 = Date(timeIntervalSince1970: 1_445_077_917)
         let oct172015At1600 = Date(timeIntervalSince1970: 1_445_097_600)
         let oct172015At2036 = Date(timeIntervalSince1970: 1_445_114_196)
-
+        
         XCTAssertTrue(oct172015At1600.isBetween(oct172015At1031, and: oct172015At2036))
     }
-
+    
     func testIsNotBetween() {
         let oct172015At1031 = Date(timeIntervalSince1970: 1_445_077_917)
         let someDateIn2020 = Date(timeIntervalSince1970: 1_590_227_875)
         let oct172015At2036 = Date(timeIntervalSince1970: 1_445_114_196)
-
+        
         XCTAssertFalse(someDateIn2020.isBetween(oct172015At1031, and: oct172015At2036))
     }
-
+    
     func testNumberOfMinutesBetween() {
         let minutes = 20
-
+        
         let date = Date(timeIntervalSince1970: 1_590_228_486)
         let twentyMinutesFromNow = date.addMinutes(minutes)
-
+        
         XCTAssertEqual(minutes, twentyMinutesFromNow.numberOfMinutesBetween(date))
     }
     
@@ -106,18 +106,18 @@ final class DateTest: XCTestCase {
         
         XCTAssertEqual(days, sevenDaysFromNow.numberOfDaysBetween(date))
     }
-
+    
     func testNumberOfMinutesInDay() {
         let expect = 12 * 60
         let date = Date(timeIntervalSince1970: 1_640_365_200)
         XCTAssertEqual(expect, date.minuteOfDay)
     }
-
+    
     func testNoonIsFiftyPrecentOfTheDay() {
         let date = Date(timeIntervalSince1970: 1_640_365_200)
         XCTAssertEqual(0.5, date.percentOfDay)
     }
-
+    
     func testAtGivenValidHourMinute() {
         let date = Date(timeIntervalSince1970: 1_640_600_037)
         let expectedDate = Date(timeIntervalSince1970: 1_640_611_452)
@@ -125,7 +125,7 @@ final class DateTest: XCTestCase {
         XCTAssertNotNil(atEightTwentyFour)
         XCTAssertEqual(expectedDate, atEightTwentyFour)
     }
-
+    
     func testPercentOfDayMidDay() {
         let pct = 0.5
         let date = Date(precentOfDay: pct)
@@ -133,7 +133,7 @@ final class DateTest: XCTestCase {
         XCTAssertEqual(12, components.hour)
         XCTAssertEqual(0, components.minutes)
     }
-
+    
     func testPrecentOfDayEndOfDay() {
         let pct = 0.9999
         let date = Date(precentOfDay: pct)
@@ -150,5 +150,56 @@ final class DateTest: XCTestCase {
         XCTAssertEqual(todayMonthDayYear.month, replaced.month)
         XCTAssertEqual(todayMonthDayYear.day, replaced.day)
         XCTAssertEqual(todayMonthDayYear.year, replaced.year)
+    }
+    
+    // MARK: - atGivenDate
+    func testAtGivenWithValidDate() {
+        let date = Date.atGiven(month: 9, day: 20, year: 2024, hour: 14, minute: 30, second: 45)
+        XCTAssertNotNil(date, "Date should be created successfully")
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
+        
+        XCTAssertEqual(components.year, 2024)
+        XCTAssertEqual(components.month, 9)
+        XCTAssertEqual(components.day, 20)
+        XCTAssertEqual(components.hour, 14)
+        XCTAssertEqual(components.minute, 30)
+        XCTAssertEqual(components.second, 45)
+    }
+    
+    func testAtGivenWithDefaultTime() {
+        let date = Date.atGiven(month: 3, day: 15, year: 2023)
+        XCTAssertNotNil(date, "Date should be created successfully")
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
+        
+        XCTAssertEqual(components.year, 2023)
+        XCTAssertEqual(components.month, 3)
+        XCTAssertEqual(components.day, 15)
+        XCTAssertEqual(components.hour, 0)
+        XCTAssertEqual(components.minute, 0)
+        XCTAssertEqual(components.second, 0)
+    }
+    
+    func testAtGivenDateWithTime() {
+        let date = Date.atGiven(
+            month: 3,
+            day: 15,
+            year: 2023,
+            hour: 8,
+            minute: 30,
+            second: 45
+        )
+        XCTAssertNotNil(date, "Date should be created successfully")
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date!)
+        XCTAssertEqual(components.year, 2023)
+        XCTAssertEqual(components.month, 3)
+        XCTAssertEqual(components.day, 15)
+        XCTAssertEqual(components.hour, 8)
+        XCTAssertEqual(components.minute, 30)
+        XCTAssertEqual(components.second, 45)
     }
 }
