@@ -72,6 +72,21 @@ final class DateTest: XCTestCase {
         XCTAssertTrue(oct172015.isSameDay(laterThatSameDay))
     }
     
+    func testIsSameDayAtOrAfter() {
+        let expectedHour = 9
+        let currentDate = Date(timeIntervalSince1970: 1_445_077_917)
+        let dateAtNineAM = Calendar.current.date(
+            bySettingHour: expectedHour,
+            minute: 0,
+            second: 0,
+            of: currentDate
+        )!
+        
+        XCTAssertTrue(
+            dateAtNineAM.isSameDay(currentDate, hourAtOrAfter: expectedHour)
+        )
+    }
+    
     func testIsBetween() {
         let oct172015At1031 = Date(timeIntervalSince1970: 1_445_077_917)
         let oct172015At1600 = Date(timeIntervalSince1970: 1_445_097_600)
