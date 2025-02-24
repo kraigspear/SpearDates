@@ -1,4 +1,5 @@
 {
+  "originHash" : "b8db9daf3d660de75716d408d928f5faf9e5913db60f42d2e752981fcb39fb25",
   "pins" : [
     {
       "identity" : "spearfoundation",
@@ -6,9 +7,9 @@
       "location" : "https://github.com/kraigspear/Spearfoundation.git",
       "state" : {
         "branch" : "main",
-        "revision" : "3b0af6331db07c3af5bb3d885d9261dbe64cb362"
+        "revision" : "71659c53179c7a50dc6379a2b0df5acce85684a9"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
