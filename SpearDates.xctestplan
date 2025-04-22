@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "49C5FCF2-5094-4984-B4BC-DDE19EC90488",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SpearDatesTests",
+        "name" : "SpearDatesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

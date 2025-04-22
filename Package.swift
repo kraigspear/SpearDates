@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/kraigspear/Spearfoundation.git", branch: "main")
+        .package(url: "https://github.com/kraigspear/Spearfoundation.git", branch: "main"),
     ],
     targets: [
         .target(
