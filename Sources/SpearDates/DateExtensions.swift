@@ -15,7 +15,7 @@ import SpearFoundation
 ///   - right: Right side
 /// - Returns: Result of subtracting two dates
 public func - (left: Date, right: Date) -> (month: Int, day: Int, year: Int, hour: Int, minute: Int, second: Int) {
-    left.subtractDate(right)
+    return left.subtractDate(right)
 }
 
 public extension Date {
@@ -113,12 +113,12 @@ public extension Date {
 
         let dateComponents = calendar.dateComponents(types, from: self, to: otherDate)
 
-        return (month: dateComponents.month!,
-                day: dateComponents.day!,
-                year: dateComponents.year!,
-                hour: dateComponents.hour!,
-                minute: dateComponents.minute!,
-                second: dateComponents.second!)
+        return (month: abs(dateComponents.month!),
+                day: abs(dateComponents.day!),
+                year: abs(dateComponents.year!),
+                hour: abs(dateComponents.hour!),
+                minute: abs(dateComponents.minute!),
+                second: abs(dateComponents.second!))
     }
 
     /**
