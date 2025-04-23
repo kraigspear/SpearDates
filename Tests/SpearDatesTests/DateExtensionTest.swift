@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Testing
 @testable import SpearDates
+import Testing
 
 @Test
 func testDateSubtractionOperator() {
@@ -15,14 +15,14 @@ func testDateSubtractionOperator() {
     // Create two dates with a known difference
     let date1 = Date.atGiven(month: 5, day: 15, year: 2025, hour: 10, minute: 30, second: 45)
     #expect(date1 != nil, "Failed to create first test date")
-    
+
     let date2 = Date.atGiven(month: 3, day: 10, year: 2024, hour: 8, minute: 15, second: 30)
     #expect(date2 != nil, "Failed to create second test date")
-    
+
     // Act
     // Subtract the earlier date from the later date
     let difference = date1! - date2!
-    
+
     // Assert
     // Verify all components of the difference
     #expect(difference.month == 2)
@@ -31,7 +31,7 @@ func testDateSubtractionOperator() {
     #expect(difference.hour == 2)
     #expect(difference.minute == 15)
     #expect(difference.second == 15)
-    
+
     // Test with same date (should be all zeros)
     let zeroDifference = date1! - date1!
     #expect(zeroDifference.month == 0)

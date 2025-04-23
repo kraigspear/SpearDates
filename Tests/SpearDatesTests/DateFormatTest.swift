@@ -52,16 +52,17 @@ struct FormatTest {
             #expect(DateFormatters.formatHourAmPm(
                 2,
                 lowerCased: true,
-                spaceBetweenHourAndAmPm: false)
-            == "2am")
+                spaceBetweenHourAndAmPm: false
+            )
+                == "2am")
         }
-        
+
         @Test("Lower bound hour invalid")
         func lowerBoundHourInvalid() {
             let hour = DateFormatters.formatHourAmPm(-1)
             #expect(hour == "12 AM", "Should use the valid lower-bound hour of 12 AM")
         }
-        
+
         @Test("Upper bound hour invalid")
         func upperBoundHourInvalid() {
             var hour = DateFormatters.formatHourAmPm(24)

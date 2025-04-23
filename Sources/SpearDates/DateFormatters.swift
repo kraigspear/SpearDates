@@ -1,6 +1,35 @@
 import Foundation
 import SpearFoundation
 
+/// An enumeration that defines various date format styles for consistent presentation.
+///
+/// `DateFormat` provides a collection of commonly used date formatting patterns
+/// that can be applied to `Date` objects. Each case represents a specific formatting
+/// style that determines how time components are displayed.
+///
+/// The enum includes a `format(_:in:)` method that applies the selected format to
+/// a given date in the specified time zone.
+///
+/// # Available Format Styles
+///
+/// - `hmm_a`: Hour and minute with AM/PM designation (e.g., "9:30 AM")
+/// - `ha`: Hour with AM/PM designation (e.g., "9 AM")
+/// - `hmm`: Hour and minute in 24-hour format (e.g., "14:30")
+/// - `dayOfWeek`: Full name of the day of week (e.g., "Wednesday")
+///
+/// # Usage
+///
+/// ```swift
+/// let now = Date()
+/// let timeString = DateFormat.hmm_a.format(now, in: .current)
+/// // Returns something like "2:30 PM"
+///
+/// let dayName = DateFormat.dayOfWeek.format(now, in: .current)
+/// // Returns something like "Wednesday"
+/// ```
+///
+/// All formats respect the user's locale settings and follow
+/// standard formatting conventions for the specified time zone.
 public enum DateFormat {
     case hmm_a
     case ha
@@ -20,6 +49,39 @@ public enum DateFormat {
     }
 }
 
+/// A collection of utility methods for formatting dates in various standardized formats.
+///
+/// `DateFormatters` provides a set of static methods to convert `Date` objects into
+/// formatted strings according to common presentation needs. These formats include:
+/// - ISO8601/Zulu time formats (with and without milliseconds)
+/// - Day of week formatting
+/// - Short time and date-time presentations
+/// - Hour formatting with AM/PM designations
+///
+/// # Usage
+///
+/// Format a date in ISO8601/Zulu format:
+/// ```swift
+/// let now = Date()
+/// let zuluTime = DateFormatters.formatZulu(now)
+/// // Returns something like "2025-04-23T14:30:00Z"
+/// ```
+///
+/// Format a date showing only the day of week:
+/// ```swift
+/// let now = Date()
+/// let dayName = DateFormatters.formatDayOfWeek(now)
+/// // Returns something like "Wednesday"
+/// ```
+///
+/// Format an hour with AM/PM designation:
+/// ```swift
+/// let hourString = DateFormatters.formatHourAmPm(14)
+/// // Returns "2 PM"
+/// ```
+///
+/// All formatters respect the user's locale settings where appropriate
+/// and follow best practices for date and time formatting.
 public enum DateFormatters {
     public static func formatZulu(_ date: Date) -> String {
         date.formatted(
@@ -72,13 +134,14 @@ public enum DateFormatters {
     /// The function allows customization of the output's casing and spacing.
     ///
     /// - Parameters:
-    ///   - hour: An integer representing the hour in 24-hour format (0-24). This parameter is clamped to ensure it falls within valid hour range.
+    ///   - hour: An integer representing the hour in 24-hour format (0-23). This parameter is clamped to ensure it falls within valid hour range.
     ///   - lowerCased: A Boolean value that determines whether the AM/PM designation should be lowercase. The default is `false`.
     ///   - spaceBetweenHourAndAmPm: A Boolean value that determines whether there should be a space between the hour and the AM/PM designation. The default is `true`.
     ///
     /// - Returns: A formatted string representing the hour with AM/PM designation.
     ///
-    /// - Example:
+    /// # Examples
+    ///
     ///   ```swift
     ///   // Format regular hour with default settings (uppercase AM/PM with space)
     ///   let morningHour = DateFormatters.formatHourAmPm(9)
