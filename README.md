@@ -51,7 +51,7 @@ let (month, day, year, hour, minutes, seconds) = dateTime
 let specificDate = Date.atGiven(month: 4, day: 23, year: 2025, hour: 14, minute: 30)
 
 // Create a date at a specific percentage of the day (0.0 to 1.0)
-let noon = Date(precentOfDay: 0.5) // 12:00 PM
+let noon = Date(percentOfDay: 0.5) // 12:00 PM
 ```
 
 ### Date Manipulation
