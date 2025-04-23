@@ -93,7 +93,7 @@ public enum DateFormatters {
     ///   // Returns "12 PM"
     ///   ```
     public static func formatHourAmPm(
-        @Clamped(range: 0 ... 24) _ hour: Int,
+        @Clamped(range: 0 ... 23) _ hour: Int,
         lowerCased: Bool = false,
         spaceBetweenHourAndAmPm: Bool = true
     ) -> String {
