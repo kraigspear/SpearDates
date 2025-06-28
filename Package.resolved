@@ -1,13 +1,13 @@
 {
-  "originHash" : "e004316af2b109d4e63a55bbc4dfa5870da9c7a2687c1d69642bc7c898ffb28c",
+  "originHash" : "1c3f40c006610def604df71163289bcfdae3fb82f549fc881b2cb44da8f67e9a",
   "pins" : [
     {
       "identity" : "spearfoundation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kraigspear/Spearfoundation.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "7a309d8eed7010775bc2677ae9f3033e48d66b00"
+        "branch" : "iOS18",
+        "revision" : "ed20f8e63b2b15207317f7f137f0142385b56b6c"
       }
     }
   ],

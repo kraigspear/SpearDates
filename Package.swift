@@ -1,4 +1,4 @@
-// swift-tools-version:6.2
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "SpearDates",
     platforms: [
-        .iOS(.v26),
-        .macOS(.v26),
+        .iOS(.v18),
+        .macOS(.v15),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/kraigspear/Spearfoundation.git", branch: "main"),
+        .package(url: "https://github.com/kraigspear/Spearfoundation.git", branch: "iOS18"),
     ],
     targets: [
         .target(
