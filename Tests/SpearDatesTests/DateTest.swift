@@ -143,15 +143,15 @@ final class DateTest: XCTestCase {
 
     func testPercentOfDayMidDay() {
         let pct = 0.5
-        let date = Date(precentOfDay: pct)
+        let date = Date(percentOfDay: pct)
         let components = date.toMonthDayYearHourMinutesSeconds()
         XCTAssertEqual(12, components.hour)
         XCTAssertEqual(0, components.minutes)
     }
 
-    func testPrecentOfDayEndOfDay() {
+    func testPercentOfDayEndOfDay() {
         let pct = 0.9999
-        let date = Date(precentOfDay: pct)
+        let date = Date(percentOfDay: pct)
         let components = date.toMonthDayYearHourMinutesSeconds()
         XCTAssertEqual(23, components.hour)
         XCTAssertEqual(59, components.minutes)

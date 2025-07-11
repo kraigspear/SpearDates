@@ -23,6 +23,10 @@ dependencies: [
 ]
 ```
 
+### Dependencies
+
+SpearDates depends on [SpearFoundation](https://github.com/kraigspear/Spearfoundation.git) for additional utility functions.
+
 ## Features
 
 SpearDates offers a rich set of extensions and utilities for working with dates:
@@ -50,6 +54,9 @@ let (month, day, year, hour, minutes, seconds) = dateTime
 // Create a date from components
 let specificDate = Date.atGiven(month: 4, day: 23, year: 2025, hour: 14, minute: 30)
 
+// Alternative date creation
+let dateFromComponents = Date.fromMonth(4, day: 23, year: 2025)
+
 // Create a date at a specific percentage of the day (0.0 to 1.0)
 let noon = Date(percentOfDay: 0.5) // 12:00 PM
 ```
@@ -66,6 +73,10 @@ let thirtyMinutesLater = Date().addMinutes(30)
 let midnight = date.firstHourOfDay
 let endOfDay = date.lastHourOfDay
 let nineAM = date.atGiven(hour: 9)
+let specificTime = date.atGiven(hour: 14, minute: 30, second: 0)
+
+// Replace the date while keeping the time
+let sameTimeNextMonth = date.replacingDay(with: Date().addDays(30))
 ```
 
 ### Date Comparison
@@ -102,6 +113,22 @@ let shortDateTime = DateFormatters.formatShortDateTime(date)
 // Format hours with AM/PM
 let hourString = DateFormatters.formatHourAmPm(14) // "2 PM"
 let customHourFormat = DateFormatters.formatHourAmPm(14, lowerCased: true, spaceBetweenHourAndAmPm: false) // "2pm"
+```
+
+### Additional Utilities
+
+```swift
+// Get Unix timestamp
+let timestamp = date.epoch
+
+// Get minute of the day (0-1439)
+let minutesSinceMidnight = date.minuteOfDay
+
+// Get percentage of day passed (0.0-1.0)
+let dayProgress = date.percentOfDay
+
+// Convert to Julian Day Number
+let julianDay = date.toJulianDayNumber()
 ```
 
 ## Example
