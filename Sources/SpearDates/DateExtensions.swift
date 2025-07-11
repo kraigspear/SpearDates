@@ -41,6 +41,7 @@ public extension Date {
      ```
 
      */
+    @available(*, deprecated, message: "Use Calendar.current.date(byAdding: .day, value: numberOfDays, to: self) instead")
     func addDays(_ numberOfDays: Int) -> Date {
         var dayComponent = DateComponents()
         dayComponent.day = numberOfDays
@@ -52,6 +53,7 @@ public extension Date {
      - Parameter numberOfMinutes: Number of minutes to add
      - Returns: Date with the minutes added
      **/
+    @available(*, deprecated, message: "Use Calendar.current.date(byAdding: .minute, value: numberOfMinutes, to: self) instead")
     func addMinutes(_ numberOfMinutes: Int) -> Date {
         var dayComponent = DateComponents()
         dayComponent.minute = numberOfMinutes
@@ -63,6 +65,7 @@ public extension Date {
      - Parameter numberOfHours: Number of hours to add
      - Returns: Date with the minutes added
      **/
+    @available(*, deprecated, message: "Use Calendar.current.date(byAdding: .hour, value: numberOfHours, to: self) instead")
     func addHours(_ numberOfHours: Int) -> Date {
         var dayComponent = DateComponents()
         dayComponent.hour = numberOfHours
@@ -77,6 +80,7 @@ public extension Date {
 
      - Returns: true if the two days occur on the same day
      */
+    @available(*, deprecated, message: "Use Calendar.current.isDate(self, inSameDayAs: date) instead")
     func isSameDay(_ date: Date) -> Bool {
         Calendar.current.isDate(self, inSameDayAs: date)
     }
@@ -188,6 +192,7 @@ public extension Date {
      - parameter year: The year of the date to create
      - returns: The date from the provided components using the current calendar or nil, if the date could not be created
      */
+    @available(*, deprecated, message: "Use Calendar.current.date(from: DateComponents(year: year, month: month, day: day)) instead")
     static func fromMonth(_ month: Int, day: Int, year: Int) -> Date? {
         var components = DateComponents()
         components.month = month
@@ -210,6 +215,7 @@ public extension Date {
      How many minutes have passed between this date and `otherDate`
      - parameter otherDate: Date to compare this date to
      */
+    @available(*, deprecated, message: "Use abs(Calendar.current.dateComponents([.minute], from: self, to: otherDate).minute ?? 0) instead")
     func numberOfMinutesBetween(_ otherDate: Date) -> Int {
         let calendarUnit: Set<Calendar.Component> = [Calendar.Component.minute]
         let difference = Calendar.current.dateComponents(calendarUnit, from: self, to: otherDate)
@@ -226,6 +232,7 @@ public extension Date {
      How many minutes have passed between this date and the current date
      - parameter otherDate: Date to compare this date to
      */
+    @available(*, deprecated, message: "Use numberOfMinutesBetween(Date()) or abs(Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0) instead")
     func numberOfMinutesBetweenNow() -> Int {
         numberOfMinutesBetween(Date())
     }
@@ -241,6 +248,7 @@ public extension Date {
     }
 
     /// Midnight on this date
+    @available(*, deprecated, message: "Use Calendar.current.startOfDay(for: self) instead")
     var firstHourOfDay: Date {
         let flags: Set<Calendar.Component> = [
             Calendar.Component.month,
@@ -273,6 +281,7 @@ public extension Date {
     }
 
     /// Connivance property for readability to encourage one way to get epoch. `timeIntervalSince1970`
+    @available(*, deprecated, message: "Use timeIntervalSince1970 directly instead")
     var epoch: TimeInterval { timeIntervalSince1970 }
 
     /// What minute of the day for this Date

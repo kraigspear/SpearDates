@@ -2,14 +2,14 @@
 
 SpearDates is a Swift package that provides convenient date handling utilities, reducing common boilerplate code and making date operations more concise and readable.
 
-[![Swift](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-iOS%2018%20%7C%20macOS%2015-blue.svg)](https://developer.apple.com)
+[![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%2026%20%7C%20macOS%2026-blue.svg)](https://developer.apple.com)
 [![GitHub](https://img.shields.io/github/license/kraigspear/SpearDates)](https://github.com/kraigspear/SpearDates/blob/main/LICENSE)
 
 ## Requirements
 
-- Swift 6.0+
-- iOS 18.0+ / macOS 15.0+
+- Swift 6.2+
+- iOS 26.0+ / macOS 26.0+
 
 ## Installation
 
@@ -26,6 +26,10 @@ dependencies: [
 ### Dependencies
 
 SpearDates depends on [SpearFoundation](https://github.com/kraigspear/Spearfoundation.git) for additional utility functions.
+
+## Migration Notice
+
+Several functions have been deprecated in favor of native Swift/Foundation APIs. The deprecated functions will show warnings with migration guidance. See the deprecation messages for recommended replacements.
 
 ## Features
 

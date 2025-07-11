@@ -52,7 +52,7 @@ final class DateTest: XCTestCase {
 
     func testAddDays() {
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
-        let aDayLater = oct172015.addDays(1)
+        let aDayLater = oct172015.testAddDays(1)
         let mdy = aDayLater.toMonthDayYear()
         XCTAssertEqual(18, mdy.day)
     }
@@ -60,7 +60,7 @@ final class DateTest: XCTestCase {
     func testAddMinutes() {
         // Saturday, October 17, 2015 10:31:57 AM
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
-        let twentyMinutesFrom = oct172015.addMinutes(20)
+        let twentyMinutesFrom = oct172015.testAddMinutes(20)
         let components = Calendar.current.dateComponents([Calendar.Component.minute], from: twentyMinutesFrom)
         // 31 + 20
         XCTAssertEqual(51, components.minute!)
@@ -69,7 +69,7 @@ final class DateTest: XCTestCase {
     func testIsSameDay() {
         let oct172015 = Date(timeIntervalSince1970: 1_445_077_917)
         let laterThatSameDay = Date(timeIntervalSince1970: 1_445_114_196)
-        XCTAssertTrue(oct172015.isSameDay(laterThatSameDay))
+        XCTAssertTrue(oct172015.testIsSameDay(laterThatSameDay))
     }
 
     func testIsSameDayAtOrAfter() {
@@ -107,9 +107,9 @@ final class DateTest: XCTestCase {
         let minutes = 20
 
         let date = Date(timeIntervalSince1970: 1_590_228_486)
-        let twentyMinutesFromNow = date.addMinutes(minutes)
+        let twentyMinutesFromNow = date.testAddMinutes(minutes)
 
-        XCTAssertEqual(minutes, twentyMinutesFromNow.numberOfMinutesBetween(date))
+        XCTAssertEqual(minutes, twentyMinutesFromNow.testNumberOfMinutesBetween(date))
     }
 
     func testNumberOfDaysBetween() {
@@ -117,7 +117,7 @@ final class DateTest: XCTestCase {
 
         let date = Date(timeIntervalSince1970: 1_684_488_182)
 
-        let sevenDaysFromNow = date.addDays(7)
+        let sevenDaysFromNow = date.testAddDays(7)
 
         XCTAssertEqual(days, sevenDaysFromNow.numberOfDaysBetween(date))
     }
